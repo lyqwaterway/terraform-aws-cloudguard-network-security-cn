@@ -90,7 +90,6 @@ resource "aws_security_group" "management_sg" {
     cidr_blocks = [var.admin_cidr]
   }
   
-    // Add dynamic rules from the "security_rules" variable
   dynamic "ingress" {
     for_each = [for rule in var.security_rules : rule if rule.direction == "ingress"]
     content {

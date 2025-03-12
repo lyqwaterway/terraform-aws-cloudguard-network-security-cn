@@ -5,11 +5,15 @@ variable "prefix" {
   type = string
   description = "(Optional) Instances name prefix"
   default = ""
+    validation {
+    condition     = length(var.prefix) <= 40
+    error_message = "Prefix can not exceed 40 characters."
+  }
 }
 variable "asg_name" {
   type = string
   description = "Autoscaling Group name"
-  default = "Check-Point-Security-Gateway-AutoScaling-Group-tf"
+  default = "Check-Point-ASG-tf"
   validation {
     condition     = length(var.asg_name) <= 100
     error_message = "Autoscaling Group name can not exceed 100 characters."
@@ -68,7 +72,7 @@ variable "gateway_instance_type" {
   default = "c6in.xlarge"
 }
 module "validate_instance_type" {
-  source = "../common/instance_type"
+  source = "../instance_type"
 
   chkp_type = "gateway"
   instance_type = var.gateway_instance_type
@@ -126,7 +130,7 @@ variable "gateway_version" {
   default = "R81.20-BYOL"
 }
 module "validate_gateway_version" {
-  source = "../common/version_license"
+  source = "../version_license"
 
   chkp_type = "gwlb_gw"
   version_license = var.gateway_version
@@ -175,4 +179,15 @@ variable "volume_type" {
   type = string
   description = "General Purpose SSD Volume Type"
   default = "gp3"
+}
+variable "security_rules" {
+  description = "List of security rules for ingress and egress"
+  type        = list(object({
+    direction   = string  # "ingress" or "egress"
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+  default = []
 }
