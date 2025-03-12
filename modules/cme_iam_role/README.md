@@ -16,6 +16,20 @@ See the [Creating an AWS IAM Role for Security Management Server](https://suppor
 ## Usage
 Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
+**Example:**
+```
+provider "aws" {}
+
+module "example_module" {
+
+    source  = "CheckPointSW/cloudguard-network-security/aws//modules/cme_iam_role"
+    version = "1.0.2"
+
+    permissions = "Create with read permissions"
+    sts_roles = ['arn:aws:iam::111111111111:role/role_name']
+    trusted_account = ""
+}
+```
 ## Inputs
 | Name            | Description                                                                                                                                                           | Type         | Allowed Values                                                                                                                                  |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -25,6 +39,12 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 
 
 ## Outputs
+To display the outputs defined by the module, create an `outputs.tf` file with the following structure:
+```
+output "instance_public_ip" {
+  value = module.{module_name}.instance_public_ip
+}
+```
 | Name                 | Description                           |
 |----------------------|---------------------------------------|
 | cme_iam_role_arn     | The created AWS IAM Role arn          |
