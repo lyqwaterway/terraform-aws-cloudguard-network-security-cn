@@ -89,7 +89,7 @@ module "example_module" {
 ---
 
 ## Step 2: Open the Terminal
-Ensure you have the AWS CLI installed and navigate to the directory containing your main.tf file: is located, using the appropriate terminal: 
+Ensure you have the AWS CLI installed and navigate to the directory containing your `main.tf` file is located, using the appropriate terminal: 
 
 - **Linux/macOS**: **Terminal**.
 - **Windows**: **PowerShell** or **Command Prompt**.
