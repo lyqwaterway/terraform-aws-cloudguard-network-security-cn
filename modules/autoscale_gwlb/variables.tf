@@ -191,3 +191,8 @@ variable "security_rules" {
   }))
   default = []
 }
+variable "enable_ipv6" {
+  type = bool
+  description = "Enable IPv6 settings of AWS resources."
+  default = false
+}
