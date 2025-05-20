@@ -137,6 +137,7 @@ module "example_module" {
 | volume_type                            | General Purpose SSD Volume Type                                                                                                                                                                                                | string | - gp3<br>- gp2<br>**Default:** gp3                                                                     |
 | gateway_maintenance_mode_password_hash | Check Point recommends setting Admin user's password and maintenance-mode password for recovery purposes. For R81.10 and below the Admin user's password is used also as maintenance-mode password. (To generate a password hash use the command "grub2-mkpasswd-pbkdf2" on Linux and paste it here). | string |                                                                                                      |
 | management_maintenance_mode_password_hash | Check Point recommends setting Admin user's password and maintenance-mode password for recovery purposes. For R81.10 and below the Admin user's password is used also as maintenance-mode password. (To generate a password hash use the command "grub2-mkpasswd-pbkdf2" on Linux and paste it here). | string |                                                                                                      |
+| enable_ipv6                               | Enables dual-stack networking (IPv4 and IPv6) for the GWLB, [Please see version compatibility in the following guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_CloudGuard_Network_for_AWS_Gateway_Load_Balancer_ASG/Content/Topics-AWS-GWLB-ASG-DG/IPv6-Support.htm) | bool   | true/false<br>**Default:** false                                         |
 
 ## Outputs
 To display the outputs defined by the module, create an `outputs.tf` file with the following structure:
@@ -154,5 +155,5 @@ output "instance_public_ip" {
 | gwlb_name           | The name of the deployed Gateway Load Balancer                                        |
 | gwlb_service_name   | The service name for the deployed Gateway Load Balancer                               |
 | gwlb_arn            | The arn for the deployed Gateway Load Balancer                                        |
-
+| enable_ipv6         | Dual-stack IPv4/IPv6 compatible                                                       |
 

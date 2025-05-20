@@ -66,9 +66,9 @@ module "example_module" {
     allow_upload_download = true
     enable_cloudwatch = false
     gateway_bootstrap_script = "echo 'this is bootstrap script' > /home/admin/bootstrap.txt"
+    enable_ipv6 = false
 }
 ```
-
 
 ## Inputs
 
@@ -103,7 +103,7 @@ module "example_module" {
 | volume_type                            | General Purpose SSD Volume Type                                                                                                                                               | string       | - gp3<br>- gp2<br>**Default:** gp3                                                                            |
 | gateway_maintenance_mode_password_hash | (Optional) Maintenance-mode password for recovery purposes.                                                                                                                    | string       |                                                                                                               |
  security_rules | List of security rules for ingress and egress.                                                         | list(object({<br/>    direction   = string    <br/>from_port   = any    <br/>to_port     = any <br/>protocol    = any <br/>cidr_blocks = list(any)<br/>}))         | **Default:** []|
-
+| enable_ipv6                            | Enables dual-stack networking (IPv4 and IPv6) for the GWLB, [Please see version compatibility in the following guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_CloudGuard_Network_for_AWS_Gateway_Load_Balancer_ASG/Content/Topics-AWS-GWLB-ASG-DG/IPv6-Support.htm)    | bool         | true/false<br>**Default:** false 
 
 
 ## Outputs
@@ -115,6 +115,7 @@ output "instance_public_ip" {
 ```
 | Name                                           | Description                                                       |
 |------------------------------------------------|-------------------------------------------------------------------|
+| 20250508                                       |Added support for IPv6 traffic settings                            |                                                                                                                           |
 | autoscale_autoscaling_group_name               | The name of the deployed AutoScaling Group                        |
 | autoscale_autoscaling_group_arn                | The ARN for the deployed AutoScaling Group                        |
 | autoscale_autoscaling_group_availability_zones | The AZs on which the Autoscaling Group is configured              |

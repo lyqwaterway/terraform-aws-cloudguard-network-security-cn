@@ -60,3 +60,8 @@ variable "health_check_protocol" {
   type = string
   default = null
 }
+variable "enable_ipv6" {
+  type = bool
+  description = "Enable IPv6 settings of AWS resources."
+  default = false
+}

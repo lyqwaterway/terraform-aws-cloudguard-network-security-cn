@@ -16,3 +16,6 @@ output "target_group_arn" {
 output "load_balancer_tags" {
   value = aws_lb.load_balancer.tags
 }
+output "enable_ipv6"{
+  value = var.enable_ipv6
+}

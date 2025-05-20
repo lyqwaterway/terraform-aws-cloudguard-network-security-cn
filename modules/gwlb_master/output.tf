@@ -22,3 +22,6 @@ output "controller_name" {
 output "template_name" {
   value = var.configuration_template
 }
+output "enable_ipv6"{
+  value = var.enable_ipv6
+}

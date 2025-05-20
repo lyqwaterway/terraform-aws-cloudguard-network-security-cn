@@ -244,3 +244,8 @@ variable "volume_type" {
   description = "General Purpose SSD Volume Type"
   default = "gp3"
 }
+variable "enable_ipv6" {
+  type = bool
+  description = "Enable IPv6 settings of AWS resources."
+  default = false
+}

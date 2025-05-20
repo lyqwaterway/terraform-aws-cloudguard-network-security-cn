@@ -39,3 +39,6 @@ output "autoscale_iam_role_name" {
   value = aws_iam_role.role.*.name
 }
 
+output "enable_ipv6"{
+  value = var.enable_ipv6
+}
