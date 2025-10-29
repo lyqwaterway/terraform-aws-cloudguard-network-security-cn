@@ -16,7 +16,7 @@ This solution uses the following modules:
 
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 **Instead of the standard terraform apply command, use the following:**
 ```
@@ -29,22 +29,22 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/aws//modules/tgw_cross_az_cluster_master"
+    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/tgw_cross_az_cluster_master"
     version = "1.0.2"
 
       // --- VPC Network Configuration ---
      vpc_cidr = "10.0.0.0/16"
      public_subnets_map = {
-     "us-east-1a" = 1
-     "us-east-1b" = 2
+     "cn-northwest-1a" = 1
+     "cn-northwest-1b" = 2
      }
      private_subnets_map = {
-     "us-east-1a" = 3
-     "us-east-1b" = 4
+     "cn-northwest-1a" = 3
+     "cn-northwest-1b" = 4
      }
      tgw_subnets_map = {
-     "us-east-1a" = 5
-     "us-east-1b" = 6
+     "cn-northwest-1a" = 5
+     "cn-northwest-1b" = 6
      }
      subnets_bit_length = 8
 
@@ -111,12 +111,12 @@ module "example_module" {
 | Name                                   | Description                                                                                                                                         | Type        | Allowed Values                                                                                                    |
 |----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------|
 | vpc_cidr                               | The CIDR block of the VPC                                                                                                                          | string      |                                                                                                              |
-| public_subnets_map                     | A map of pairs `{availability-zone = subnet-suffix-number}`. Minimum 2 pairs (e.g. `{"us-east-1a" = 1, "us-east-1b" = 2}`).                        | map         |                                                                                                              |
-| private_subnets_map                    | A map of pairs `{availability-zone = subnet-suffix-number}`. Minimum 2 pairs (e.g. `{"us-east-1a" = 3, "us-east-1b" = 4}`).                        | map         |                                                                                                              |
-| tgw_subnets_map                        | A map of pairs `{availability-zone = subnet-suffix-number}` for the TGW subnets. Minimum 2 pairs (e.g. `{"us-east-1a" = 1}`).                      | map         |                                                                                                              |
+| public_subnets_map                     | A map of pairs `{availability-zone = subnet-suffix-number}`. Minimum 2 pairs (e.g. `{"cn-northwest-1a" = 1, "cn-northwest-1b" = 2}`).                        | map         |                                                                                                              |
+| private_subnets_map                    | A map of pairs `{availability-zone = subnet-suffix-number}`. Minimum 2 pairs (e.g. `{"cn-northwest-1a" = 3, "cn-northwest-1b" = 4}`).                        | map         |                                                                                                              |
+| tgw_subnets_map                        | A map of pairs `{availability-zone = subnet-suffix-number}` for the TGW subnets. Minimum 2 pairs (e.g. `{"cn-northwest-1a" = 1}`).                      | map         |                                                                                                              |
 | subnets_bit_length                     | Number of additional bits to extend the VPC CIDR (e.g., VPC CIDR `/16` and subnets bit length `4` results in subnet address `/20`).                | number      |                                                                                                              |
 | gateway_name                           | (Optional) The name tag of the Security Gateway instances                                                                                          | string      |**Default:** Check-Point-Cluster-tf                                                                      |
-| gateway_instance_type                  | The instance type of the Security Gateways                                                                                                         | string      | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5n.large <br/> - c5n.xlarge <br/> - c5n.2xlarge <br/> - c5n.4xlarge <br/> - c5n.9xlarge <br/>  - c5n.18xlarge <br/>  - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/>  - c5d.18xlarge <br/>  - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/> - c6in.large <br/> - c6in.xlarge <br/> - c6in.2xlarge <br/> - c6in.4xlarge <br/> - c6in.8xlarge <br/> - c6in.12xlarge <br/> - c6in.16xlarge <br/> - c6in.24xlarge <br/> - c6in.32xlarge <br/> - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r5b.large <br/> - r5b.xlarge <br/> - r5b.2xlarge <br/> - r5b.4xlarge <br/> - r5b.8xlarge <br/> - r5b.12xlarge <br/> - r5b.16xlarge <br/> - r5b.24xlarge <br/> - r5n.large <br/> - r5n.xlarge <br/> - r5n.2xlarge <br/> - r5n.4xlarge <br/> - r5n.8xlarge <br/> - r5n.12xlarge <br/> - r5n.16xlarge <br/> - r5n.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/> - m6a.large <br/> - m6a.xlarge <br/> - m6a.2xlarge  <br/> - m6a.4xlarge <br/> - m6a.8xlarge <br/> - m6a.12xlarge <br/> - m6a.16xlarge <br/> - m6a.24xlarge <br/> - m6a.32xlarge <br/> - m6a.48xlarge <br/>**Default:** c5.xlarge                              |
+| gateway_instance_type                  | The instance type of the Security Gateways                                                                                                         | string      | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/> - c5d.18xlarge <br/> - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/>  - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/>**Default:** c5.xlarge                              |
 | key_name                               | The EC2 Key Pair name to allow SSH access to the instance                                                                                          | string      |                                                                                                              |
 | allocate_and_associate_eip             | If true, an elastic IP will be allocated and associated with each cluster member.                                                                  | bool        | true/false<br>**Default:** true                                                                                 |
 | volume_size                            | Root volume size (GB) - minimum 100                                                                                                                | number      |**Default:** 100                                                                                        |

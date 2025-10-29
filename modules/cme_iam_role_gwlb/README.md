@@ -14,7 +14,7 @@ See the [Creating an AWS IAM Role for Security Management Server](https://suppor
 
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 **Example:**
 ```
@@ -22,11 +22,11 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/aws//modules/cme_iam_role_gwlb"
+    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/cme_iam_role_gwlb"
     version = "1.0.2"
 
     permissions = "Create with read permissions"
-    sts_roles = ['arn:aws:iam::111111111111:role/role_name']
+    sts_roles = ['arn:aws-cn:iam::111111111111:role/role_name']
     trusted_account = ""
 }
 ```

@@ -5,7 +5,7 @@ output "gwlb_arn" {
   value = module.gateway_load_balancer.load_balancer_arn
 }
 output "gwlb_service_name" {
-  value = "com.amazonaws.vpce.${data.aws_region.current.name}.${aws_vpc_endpoint_service.gwlb_endpoint_service.id}"
+  value = "cn.com.amazonaws.vpce.${data.aws_region.current.name}.${aws_vpc_endpoint_service.gwlb_endpoint_service.id}"
 }
 output "management_public_ip" {
   depends_on = [module.management]
