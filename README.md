@@ -18,40 +18,40 @@ This repository provides a structured set of Terraform modules for deploying Che
 ## Available Submodules
 
 **Submodules:**
-* [`autoscale_gwlb`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/autoscale_gwlb) - Deploys Auto Scaling Group of  CloudGuard Security Gateways into an existing VPC.
-* [`cme_iam_role`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/cme_iam_role) - Creates AWS IAM Role for Cloud Management Extension (CME) on Security Management Server.
-* [`cme_iam_role_gwlb`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/cme_iam_role_gwlb) - Creates AWS IAM Role for Cloud Management Extension (CME) manages Gateway Load Balancer Auto Scale Group on Security Management Server.
-* [`gateway`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/gateway) - Deploys Check Point CloudGuard Network Security Gateway into an existing VPC.
-* [`gateway_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/gateway_master) -Check Point CloudGuard Network Security Gateway into a new VPC.
-* [`gwlb`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/gwlb) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into an existing VPC.
-* [`gwlb_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/gwlb_master) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into a new VPC.
-* [`management`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/management) - Deploys CloudGuard Network Security Management Server into an existing VPC.
-* [`mds`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/mds) - Deploys CloudGuard Network Multi-Domain Server into an existing VPC.
-* [`qs_autoscale`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/qs_autoscale) - Deploys CloudGuard Network Security Gateway Auto Scaling Group, an external ALB/NLB, and optionally a Security Management Server and a web server Auto Scaling Group.
-* [`qs_autoscale_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/qs_autoscale_master) - Deploys CloudGuard Network Security Gateway Auto Scaling Group, an external ALB/NLB, and optionally a Security Management Server and a web server Auto Scaling Group in a new VPC.
-* [`standalone`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/standalone) - Check Point CloudGuard Network Security Gateway & Management (Standalone) instance into an existing VPC.
-* [`standalone_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/standalone_master) - CloudGuard Network Security Gateway & Management (Standalone) instance into a new VPC.
-* [`tgw_asg`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_asg) - Deploys CloudGuard Network Security Gateway Auto Scaling Group for Transit Gateway with an optional Management Server into an existing VPC.
-* [`tgw_asg_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_asg_master) - CloudGuard Network Security Gateway Auto Scaling Group for Transit Gateway with an optional Management Server in a new VPC.
-* [`tgw_cross_az_cluster`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_cross_az_cluster) - Deploys CloudGuard Network Security Cross AZ Cluster into an existing VPC on AWS for Transit Gateway.
-* [`tgw_cross_az_cluster_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_cross_az_cluster_master) - Deploys CloudGuard Network Security Cross AZ Cluster with a new VPC on AWS for Transit Gateway.
-* [`tgw_gwlb`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_gwlb) - Deploys WS Auto Scaling group configured for Gateway Load Balancer into existing Centralized Security VPC for Transit Gateway.
-* [`tgw_gwlb_master`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/tgw_gwlb_master) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into new Centralized Security VPC for Transit Gateway.
+* [`autoscale_gwlb`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/autoscale_gwlb) - Deploys Auto Scaling Group of  CloudGuard Security Gateways into an existing VPC.
+* [`cme_iam_role`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/cme_iam_role) - Creates AWS IAM Role for Cloud Management Extension (CME) on Security Management Server.
+* [`cme_iam_role_gwlb`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/cme_iam_role_gwlb) - Creates AWS IAM Role for Cloud Management Extension (CME) manages Gateway Load Balancer Auto Scale Group on Security Management Server.
+* [`gateway`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/gateway) - Deploys Check Point CloudGuard Network Security Gateway into an existing VPC.
+* [`gateway_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/gateway_master) -Check Point CloudGuard Network Security Gateway into a new VPC.
+* [`gwlb`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/gwlb) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into an existing VPC.
+* [`gwlb_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/gwlb_master) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into a new VPC.
+* [`management`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/management) - Deploys CloudGuard Network Security Management Server into an existing VPC.
+* [`mds`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/mds) - Deploys CloudGuard Network Multi-Domain Server into an existing VPC.
+* [`qs_autoscale`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/qs_autoscale) - Deploys CloudGuard Network Security Gateway Auto Scaling Group, an external ALB/NLB, and optionally a Security Management Server and a web server Auto Scaling Group.
+* [`qs_autoscale_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/qs_autoscale_master) - Deploys CloudGuard Network Security Gateway Auto Scaling Group, an external ALB/NLB, and optionally a Security Management Server and a web server Auto Scaling Group in a new VPC.
+* [`standalone`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/standalone) - Check Point CloudGuard Network Security Gateway & Management (Standalone) instance into an existing VPC.
+* [`standalone_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/standalone_master) - CloudGuard Network Security Gateway & Management (Standalone) instance into a new VPC.
+* [`tgw_asg`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_asg) - Deploys CloudGuard Network Security Gateway Auto Scaling Group for Transit Gateway with an optional Management Server into an existing VPC.
+* [`tgw_asg_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_asg_master) - CloudGuard Network Security Gateway Auto Scaling Group for Transit Gateway with an optional Management Server in a new VPC.
+* [`tgw_cross_az_cluster`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_cross_az_cluster) - Deploys CloudGuard Network Security Cross AZ Cluster into an existing VPC on AWS for Transit Gateway.
+* [`tgw_cross_az_cluster_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_cross_az_cluster_master) - Deploys CloudGuard Network Security Cross AZ Cluster with a new VPC on AWS for Transit Gateway.
+* [`tgw_gwlb`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_gwlb) - Deploys WS Auto Scaling group configured for Gateway Load Balancer into existing Centralized Security VPC for Transit Gateway.
+* [`tgw_gwlb_master`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/tgw_gwlb_master) - Deploys AWS Auto Scaling group configured for Gateway Load Balancer into new Centralized Security VPC for Transit Gateway.
 
 
 **Internal Submodules:**
-* [`amis`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/amis)
-* [`cloudwatch_policy`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/cloudwatch_policy)
-* [`cluster_iam_role`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/cluster_iam_role)
-* [`custom_autoscale`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/custom_autoscale)
-* [`elastic_ip`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/elastic_ip)
-* [`gateway_instance`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/gateway_instance)
-* [`instance_type`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/instance_type)
-* [`internal_default_route`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/internal_default_route)
-* [`load_balancer`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/load_balancer)
-* [`permissive_sg`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/permissive_sg)
-* [`version_license`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/version_license)
-* [`vpc`](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest/submodules/vpc)
+* [`amis`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/amis)
+* [`cloudwatch_policy`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/cloudwatch_policy)
+* [`cluster_iam_role`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/cluster_iam_role)
+* [`custom_autoscale`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/custom_autoscale)
+* [`elastic_ip`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/elastic_ip)
+* [`gateway_instance`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/gateway_instance)
+* [`instance_type`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/instance_type)
+* [`internal_default_route`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/internal_default_route)
+* [`load_balancer`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/load_balancer)
+* [`permissive_sg`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/permissive_sg)
+* [`version_license`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/version_license)
+* [`vpc`](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest/submodules/vpc)
 
 ***
 # AWS Terraform Security Group Configuration
@@ -81,7 +81,7 @@ Add the required module in your Terraform configuration file (`main.tf`) to depl
 provider "aws" { }
 
 module "example_module" {
-  source  = "CheckPointSW/cloudguard-network-security/aws//modules/{module_name}"
+  source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/{module_name}"
   version = "{chosen_version}"
   # Add the required inputs
 }

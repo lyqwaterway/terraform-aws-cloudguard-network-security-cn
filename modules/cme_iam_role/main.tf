@@ -1,5 +1,4 @@
 
-
 resource "aws_iam_role" "cme_iam_role" {
   assume_role_policy = data.aws_iam_policy_document.cme_role_assume_policy_document.json
   path = "/"
@@ -115,7 +114,7 @@ data "aws_iam_policy_document" "cme_role_write_policy_doc" {
     actions = [
       "cloudformation:CreateStack",
       "cloudformation:DeleteStack"]
-    resources = ["arn:aws:cloudformation:*:*:stack/vpn-by-tag--*/*"]
+    resources = ["arn:aws-cn:cloudformation:*:*:stack/vpn-by-tag--*/*"]
   }
 }
 resource "aws_iam_policy" "cme_role_write_policy" {

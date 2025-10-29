@@ -22,7 +22,7 @@ This solution uses the following modules:
 - gwlb
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -31,27 +31,27 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/aws//modules/tgw_gwlb_master"
+    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/tgw_gwlb"
     version = "1.0.4"
 
     // --- VPC Network Configuration --
     vpc_cidr = "10.0.0.0/16"
     public_subnets_map = {
-     "us-east-1a" = 1
-     "us-east-1b" = 2
-     "us-east-1c" = 3
-     "us-east-1d" = 4
+     "cn-northwest-1a" = 1
+     "cn-northwest-1b" = 2
+     "cn-northwest-1c" = 3
+     "cn-northwest-1d" = 4
     }
     tgw_subnets_map = {
-     "us-east-1a" = 5
-     "us-east-1b" = 6
-     "us-east-1c" = 7
-     "us-east-1d" = 8
+     "cn-northwest-1a" = 5
+     "cn-northwest-1b" = 6
+     "cn-northwest-1c" = 7
+     "cn-northwest-1d" = 8
     }
     subnets_bit_length = 8
       
-    availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d"]
-    number_of_AZs = 4
+    availability_zones = ["cn-northwest-1a", "cn-northwest-1b", "cn-northwest-1c", "cn-northwest-1d"]
+    number_of_AZs = 3
         
     nat_gw_subnet_1_cidr ="10.0.13.0/24"
     nat_gw_subnet_2_cidr = "10.0.23.0/24"
@@ -126,10 +126,10 @@ module "example_module" {
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | vpc_cidr                                  | The CIDR block of the VPC                                                                                                                                                        | string       |                                                                                                                                                                          |
 | subnets_bit_length                        | Number of additional bits to extend the VPC CIDR. For example, a /16 CIDR with a subnets_bit_length of 4 results in /20 subnets.                                                 | number       |                                                                                                                                                                          |
-| public_subnets_map                        | A map of {availability-zone = subnet-suffix-number}. Minimum 1 pair (e.g., {"us-east-1a" = 1}).                                                                                  | map          |                                                                                                                                                                          |
+| public_subnets_map                        | A map of {availability-zone = subnet-suffix-number}. Minimum 1 pair (e.g., {"cn-northwest-1a" = 1}).                                                                                  | map          |                                                                                                                                                                          |
 | availability_zones                        | The Availability Zones (AZs) to use for the subnets in the VPC.                                                                                                                  | string       |                                                                                                                                                                          |
 | Number_of_AZs                             | Number of Availability Zones to use in the VPC.                                                                                                                                  | number       | **Default:** 2                                                                                                                                                      |
-| tgw_subnets_map                           | A map of {availability-zone = subnet-suffix-number} for TGW subnets. Minimum 2 pairs (e.g., {"us-east-1a" = 1}).                                                                | map          |                                                                                                                                                                          |
+| tgw_subnets_map                           | A map of {availability-zone = subnet-suffix-number} for TGW subnets. Minimum 2 pairs (e.g., {"cn-northwest-1a" = 1}).                                                                | map          |                                                                                                                                                                          |
 | nat_gw_subnet_1_cidr                      | CIDR block for NAT subnet 1 in the 1st Availability Zone                                                                                                                         | string       | **Default:** 10.0.13.0/24                                                                                                                                           |
 | nat_gw_subnet_2_cidr                      | CIDR block for NAT subnet 2 in the 2nd Availability Zone                                                                                                                         | string       | **Default:** 10.0.23.0/24                                                                                                                                           |
 | nat_gw_subnet_3_cidr                      | CIDR block for NAT subnet 3 in the 3rd Availability Zone                                                                                                                         | string       | **Default:** 10.0.33.0/24                                                                                                                                           |
@@ -153,7 +153,7 @@ module "example_module" {
 | connection_acceptance_required            | Indicate whether service consumers must accept endpoint requests. Default is false (not required).                                                                                | bool         | true/false<br>**Default:** false                                                                                                                                          |
 | enable_cross_zone_load_balancing          | Enable cross-AZ load balancing. This may increase cross-AZ charges.                                                                                                               | bool         | true/false<br>**Default:** true                                                                                                                                           |
 | gateway_name                              | The name tag of the Security Gateway instances.                                                                                                                                   | string       | **Default:** gwlb-terraform                                                                                                                                       |
-| gateway_instance_type                     | The instance type of the Security Gateways                                                                                                                                       | string       | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5n.large <br/> - c5n.xlarge <br/> - c5n.2xlarge <br/> - c5n.4xlarge <br/> - c5n.9xlarge <br/>  - c5n.18xlarge <br/>  - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/>  - c5d.18xlarge <br/>  - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/> - c6in.large <br/> - c6in.xlarge <br/> - c6in.2xlarge <br/> - c6in.4xlarge <br/> - c6in.8xlarge <br/> - c6in.12xlarge <br/> - c6in.16xlarge <br/> - c6in.24xlarge <br/> - c6in.32xlarge <br/> - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r5b.large <br/> - r5b.xlarge <br/> - r5b.2xlarge <br/> - r5b.4xlarge <br/> - r5b.8xlarge <br/> - r5b.12xlarge <br/> - r5b.16xlarge <br/> - r5b.24xlarge <br/> - r5n.large <br/> - r5n.xlarge <br/> - r5n.2xlarge <br/> - r5n.4xlarge <br/> - r5n.8xlarge <br/> - r5n.12xlarge <br/> - r5n.16xlarge <br/> - r5n.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/> - m6a.large <br/> - m6a.xlarge <br/> - m6a.2xlarge  <br/> - m6a.4xlarge <br/> - m6a.8xlarge <br/> - m6a.12xlarge <br/> - m6a.16xlarge <br/> - m6a.24xlarge <br/> - m6a.32xlarge <br/> - m6a.48xlarge <br/> **Default:** c5.xlarge                                                                                                       |
+| gateway_instance_type                     | The instance type of the Security Gateways                                                                                                                                       | string       | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/> - c5d.18xlarge <br/> - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/>  - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/> **Default:** c5.xlarge                                                                                                       |
 | gateways_min_group_size                   | The minimum number of Security Gateways                                                                                                                                           | number       | **Default:** 2                                                                                                                                                     |
 | gateways_max_group_size                   | The maximum number of Security Gateways                                                                                                                                           | number       | **Default:** 10                                                                                                                                                    |
 | gateway_version                           | Gateway version and license                                                                                                                                                      | string       | - R81.20-BYOL<br>- R81.20-PAYG-NGTP<br>- R81.20-PAYG-NGTX<br>- R82-BYOL<br>- R82-PAYG-NGTP<br>- R82-PAYG-NGTX<br>**Default:** R81.20-BYOL                                                                        |

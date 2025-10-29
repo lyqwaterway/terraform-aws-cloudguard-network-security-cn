@@ -24,7 +24,7 @@ This solution uses the following modules:
 - vpc
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 **Example:**
 ```
@@ -32,7 +32,7 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/aws//examples/qs_autoscale_master"
+    source  = "lyqwaterway/cloudguard-network-security-cn/aws//examples/qs_autoscale_master"
     version = "1.0.0"
 
     
@@ -43,12 +43,12 @@ module "example_module" {
     // --- Network Configuration ---
     vpc_cidr = "10.0.0.0/16"
     public_subnets_map = {
-      "us-east-1a" = 1
-      "us-east-1b" = 2
+      "cn-northwest-1a" = 1
+      "cn-northwest-1b" = 2
     }
     private_subnets_map = {
-      "us-east-1a" = 3
-      "us-east-1b" = 4
+      "cn-northwest-1a" = 3
+      "cn-northwest-1b" = 4
     }
     subnets_bit_length = 8
 
@@ -61,7 +61,7 @@ module "example_module" {
     provision_tag = "quickstart"
     load_balancers_type = "Network Load Balancer"
     load_balancer_protocol = "TCP"
-    certificate = "arn:aws:iam::12345678:server-certificate/certificate"
+    certificate = "arn:aws-cn:iam::12345678:server-certificate/certificate"
     service_port = "80"
     admin_shell = "/etc/cli.sh"
 
@@ -119,8 +119,8 @@ module "example_module" {
 | prefix                                 | (Optional) Instances name prefix                                                                                                                                              | string       |                                                                                                                        |
 | asg_name                               | Autoscaling Group name                                                                                                                                                        | string       |                                                                                                                        |
 | vpc_cidr                               | The CIDR block of the VPC                                                                                                                                                     | string       |                                                                                                                        |
-| public_subnets_map                     | Map of pairs {availability-zone = subnet-suffix-number}. Each entry creates a subnet. Minimum 2 pairs (e.g., {"us-east-1a" = 1})                                              | map          |                                                                                                                        |
-| private_subnets_map                    | Map of pairs {availability-zone = subnet-suffix-number}. Each entry creates a subnet. Minimum 2 pairs (e.g., {"us-east-1a" = 2})                                              | map          |                                                                                                                        |
+| public_subnets_map                     | Map of pairs {availability-zone = subnet-suffix-number}. Each entry creates a subnet. Minimum 2 pairs (e.g., {"cn-northwest-1a" = 1})                                              | map          |                                                                                                                        |
+| private_subnets_map                    | Map of pairs {availability-zone = subnet-suffix-number}. Each entry creates a subnet. Minimum 2 pairs (e.g., {"cn-northwest-1a" = 2})                                              | map          |                                                                                                                        |
 | subnets_bit_length                     | Number of additional bits to extend the VPC CIDR. For example, if given a VPC CIDR ending in /16 and a value of 4, resulting subnet length will be /20                         | number       |                                                                                                                        |
 | key_name                               | The EC2 Key Pair name to allow SSH access to the instances                                                                                                                   | string       |                                                                                                                        |
 | enable_volume_encryption               | Encrypt Environment instances volume with default AWS KMS key                                                                                                                | bool         | true/false<br>**Default:** true                                                                                          |
@@ -135,7 +135,7 @@ module "example_module" {
 | service_port                           | Port the Load Balancer listens to externally. Leave blank for defaults: 80 for HTTP, 443 for HTTPS                                                                           | string       |                                                                                                                        |
 | admin_shell                            | Admin shell configuration for advanced command-line access                                                                                                                   | string       | - /etc/cli.sh<br>- /bin/bash<br>- /bin/csh<br>- /bin/tcsh<br>**Default:** /etc/cli.sh                                     |
 | gateways_subnets                       | At least 2 public subnets in the VPC. Security Management Server (if deployed) will reside in the first subnet                                                               | list(string) |                                                                                                                        |
-| gateway_instance_type                  | Instance type for the Security Gateways                                                                                                                                       | string       | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5n.large <br/> - c5n.xlarge <br/> - c5n.2xlarge <br/> - c5n.4xlarge <br/> - c5n.9xlarge <br/>  - c5n.18xlarge <br/>  - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/>  - c5d.18xlarge <br/>  - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/> - c6in.large <br/> - c6in.xlarge <br/> - c6in.2xlarge <br/> - c6in.4xlarge <br/> - c6in.8xlarge <br/> - c6in.12xlarge <br/> - c6in.16xlarge <br/> - c6in.24xlarge <br/> - c6in.32xlarge <br/> - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r5b.large <br/> - r5b.xlarge <br/> - r5b.2xlarge <br/> - r5b.4xlarge <br/> - r5b.8xlarge <br/> - r5b.12xlarge <br/> - r5b.16xlarge <br/> - r5b.24xlarge <br/> - r5n.large <br/> - r5n.xlarge <br/> - r5n.2xlarge <br/> - r5n.4xlarge <br/> - r5n.8xlarge <br/> - r5n.12xlarge <br/> - r5n.16xlarge <br/> - r5n.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/> - m6a.large <br/> - m6a.xlarge <br/> - m6a.2xlarge  <br/> - m6a.4xlarge <br/> - m6a.8xlarge <br/> - m6a.12xlarge <br/> - m6a.16xlarge <br/> - m6a.24xlarge <br/> - m6a.32xlarge <br/> - m6a.48xlarge <br/>**Default:** c5.xlarge                                                       |
+| gateway_instance_type                  | Instance type for the Security Gateways                                                                                                                                       | string       | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/> - c5d.18xlarge <br/> - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/>  - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/>**Default:** c5.xlarge                                                       |
 | gateways_min_group_size                | Minimum number of Security Gateways                                                                                                                                          | number       | <br>**Default:** 2                                                                                                    |
 | gateways_max_group_size                | Maximum number of Security Gateways                                                                                                                                          | number       | <br>**Default:** 10                                                                                                   |
 | gateway_version                        | Gateway version and license                                                                                                                                                  | string       | - R81.20-BYOL<br>- R81.20-PAYG-NGTP<br>- R82-BYOL<br>**Default:** R81.20-BYOL                                            |
