@@ -60,7 +60,7 @@ module "example_module" {
     // --- Auto Scaling Configuration ---
     minimum_group_size = 2
     maximum_group_size = 10
-    target_groups = ["arn:aws:tg1/abc123", "arn:aws:tg2/def456"]
+    target_groups = ["arn:aws-cn:tg1/abc123", "arn:aws:tg2/def456"]
 
     // --- Check Point Settings ---
     gateway_version = "R81.20-BYOL"
