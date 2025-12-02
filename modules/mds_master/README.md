@@ -17,7 +17,7 @@ This solution uses the following modules:
 - vpc
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -25,7 +25,7 @@ Follow best practices for using CGNS modules on [the root page](https://registry
 provider "aws" {}
 
 module "mds_master" {
-    source = "CheckPointSW/cloudguard-network-security/aws//modules/mds_master"
+    source = "lyqwaterway/cloudguard-network-security-cn/aws//modules/mds_master"
     version = "1.0.4"
 
   // --- VPC Network Configuration ---

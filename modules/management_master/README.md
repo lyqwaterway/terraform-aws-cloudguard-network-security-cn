@@ -10,7 +10,7 @@ These types of Terraform resources are supported:
 * [EIP](https://www.terraform.io/docs/providers/aws/r/eip.html) - conditional creation
 * [IAM Role](https://www.terraform.io/docs/providers/aws/r/iam_role.html) - conditional creation
 
-See the [Security Management Server with CloudGuard for AWS](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest) for additional information
+See the [Security Management Server with CloudGuard for AWS](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest) for additional information
 
 This solution uses the following modules:
 - amis
@@ -18,7 +18,7 @@ This solution uses the following modules:
 - vpc
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -27,7 +27,7 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "CheckPointSW/cloudguard-network-security/aws//modules/management_master"
+    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/management_master"
     version = "1.0.4"
     
     // VPC Configuration
