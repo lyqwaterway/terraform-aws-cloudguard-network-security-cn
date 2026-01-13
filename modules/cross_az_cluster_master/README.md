@@ -54,7 +54,7 @@ module "example_module" {
     gateway_name = "Check-Point-Cluster-tf"
     gateway_instance_type = "c5.xlarge"
     key_name = "publickey"
-    volume_size = 100
+    volume_size = 200
     volume_encryption = "alias/aws/ebs"
     enable_instance_connect = false
     disable_instance_termination = false

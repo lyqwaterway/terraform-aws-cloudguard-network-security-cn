@@ -60,7 +60,7 @@ module "example_module" {
     // --- General Settings ---
     key_name = "publickey"
     enable_volume_encryption = true
-    volume_size = 100
+    volume_size = 200
     enable_instance_connect = false
     disable_instance_termination = false
     allow_upload_download = true

@@ -72,7 +72,7 @@ variable "key_name" {
 variable "volume_size" {
   type = number
   description = "Root volume size (GB) - minimum 100"
-  default = 100
+  default = 200
 }
 resource "null_resource" "volume_size_too_small" {
   // Will fail if var.volume_size is less than 100
@@ -132,15 +132,18 @@ variable "gateway_password_hash" {
   type = string
   description = "(Optional) Admin user's password hash (use command 'openssl passwd -6 PASSWORD' to get the PASSWORD's hash)"
   default = ""
+  sensitive = true
 }
 variable "gateway_maintenance_mode_password_hash" {
   description = "(optional) Check Point recommends setting Admin user's password and maintenance-mode password for recovery purposes. For R81.10 and below the Admin user's password is used also as maintenance-mode password. (To generate a password hash use the command 'grub2-mkpasswd-pbkdf2' on Linux and paste it here)."
   type = string
   default = ""
+  sensitive = true
 }
 variable "gateway_SICKey" {
   type = string
   description = "The Secure Internal Communication key for trusted connection between Check Point components (at least 8 alphanumeric characters)"
+  sensitive = true
 }
 variable "enable_instance_connect" {
   type = bool

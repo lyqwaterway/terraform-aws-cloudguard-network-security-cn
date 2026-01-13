@@ -47,7 +47,7 @@ variable "allocate_and_associate_eip" {
 variable "volume_size" {
   type = number
   description = "Root volume size (GB) - minimum 100"
-  default = 100
+  default = 200
 }
 resource "null_resource" "volume_size_too_small" {
   // Volume Size validation - resource will not be created if the volume size is smaller than 100
@@ -104,26 +104,31 @@ variable "admin_shell" {
 variable "gateway_SICKey" {
   type = string
   description = "The Secure Internal Communication key for trusted connection between Check Point components. Choose a random string consisting of at least 8 alphanumeric characters"
+  sensitive = true
 }
 variable "gateway_password_hash" {
   type = string
   description = "(Optional) Admin user's password hash (use command 'openssl passwd -6 PASSWORD' to get the PASSWORD's hash)"
   default = ""
+  sensitive = true
 }
 variable "gateway_maintenance_mode_password_hash" {
   description = "(optional) Check Point recommends setting Admin user's password and maintenance-mode password for recovery purposes. For R81.10 and below the Admin user's password is used also as maintenance-mode password. (To generate a password hash use the command 'grub2-mkpasswd-pbkdf2' on Linux and paste it here)."
   type = string
   default = ""
+  sensitive = true
 }
 
 // --- Quick connect to Smart-1 Cloud (Recommended) ---
 variable "memberAToken" {
   type = string
   description = "Follow the instructions in sk180501 to quickly connect this Single AZ Cluster to Smart-1 Cloud."
+  sensitive = true
 }
 variable "memberBToken" {
   type = string
   description = "Follow the instructions in sk180501 to quickly connect this Single AZ Cluster to Smart-1 Cloud."
+  sensitive = true
 }
 
 // --- Advanced Settings ---

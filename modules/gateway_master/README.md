@@ -51,7 +51,7 @@ module "example_module" {
   gateway_instance_type = "c5.xlarge"
   key_name = "publickey"
   allocate_and_associate_eip = true
-  volume_size = 100
+  volume_size = 200
   volume_encryption = ""
   enable_instance_connect = false
   disable_instance_termination = false

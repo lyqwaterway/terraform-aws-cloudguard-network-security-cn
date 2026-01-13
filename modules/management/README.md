@@ -38,7 +38,7 @@ module "example_module" {
     management_instance_type = "m5.xlarge"
     key_name = "publickey"
     allocate_and_associate_eip = true
-    volume_size = 100
+    volume_size = 200
     volume_encryption = "alias/aws/ebs"
     enable_instance_connect = false
     disable_instance_termination = false

@@ -22,7 +22,7 @@ variable "enable_volume_encryption" {
 variable "volume_size" {
   type = number
   description = "Root volume size (GB) - minimum 100"
-  default = 100
+  default = 200
 }
 resource "null_resource" "volume_size_too_small" {
   // Will fail if var.volume_size is less than 100
@@ -140,15 +140,18 @@ variable "gateway_password_hash" {
   type = string
   description = "(Optional) Admin user's password hash (use command 'openssl passwd -6 PASSWORD' to get the PASSWORD's hash)"
   default = ""
+  sensitive = true
 }
 variable "gateway_maintenance_mode_password_hash" {
   description = "Maintenance mode password hash for the gateway instances, relevant only for R81.20 and higher versions"
   type = string
   default = ""
+  sensitive = true
 }
 variable "gateway_SICKey" {
   type = string
   description = "The Secure Internal Communication key for trusted connection between Check Point components (at least 8 alphanumeric characters)"
+  sensitive = true
 }
 
 variable "gateways_provision_address_type" {
@@ -213,11 +216,13 @@ variable "management_password_hash" {
   type = string
   description = "(Optional) Admin user's password hash (use command 'openssl passwd -6 PASSWORD' to get the PASSWORD's hash)"
   default = ""
+  sensitive = true
 }
 variable "management_maintenance_mode_password_hash" {
   description = "Maintenance mode password hash for the management instance, relevant only for R81.20 and higher versions"
   type = string
   default = ""
+  sensitive = true
 }
 variable "gateways_policy" {
   type = string
@@ -244,8 +249,12 @@ variable "volume_type" {
   description = "General Purpose SSD Volume Type"
   default = "gp3"
 }
-variable "enable_ipv6" {
-  type = bool
-  description = "Enable IPv6 settings of AWS resources."
-  default = false
+variable "ip_mode" {
+  type = string
+  description = "IP mode of AWS resources."
+  default = "IPv4"
+  validation {
+    condition     = contains(["IPv4", "DualStack"], var.ip_mode)
+    error_message = "The ip_mode value must be one of: IPv4 or DualStack."
+  }
 }

@@ -51,7 +51,7 @@ module "example_module" {
     subnets_bit_length = 8
       
     availability_zones = ["cn-northwest-1a", "cn-northwest-1b", "cn-northwest-1c", "cn-northwest-1d"]
-    number_of_AZs = 3
+    number_of_AZs = 4
         
     nat_gw_subnet_1_cidr ="10.0.13.0/24"
     nat_gw_subnet_2_cidr = "10.0.23.0/24"
@@ -66,7 +66,7 @@ module "example_module" {
     // --- General Settings ---
     key_name = "publickey"
     enable_volume_encryption = true
-    volume_size = 100
+    volume_size = 200
     enable_instance_connect = false
     disable_instance_termination = false
     allow_upload_download = true

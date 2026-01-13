@@ -35,7 +35,7 @@ module "example_module" {
     mds_name = "CP-MDS-tf"
     mds_instance_type = "m5.12xlarge"
     key_name = "publickey"
-    volume_size = 100
+    volume_size = 200
     volume_encryption = "alias/aws/ebs"
     enable_instance_connect = false
     disable_instance_termination = false

@@ -38,8 +38,10 @@ module "example_module" {
         
     // --- General Settings ---
     key_name = "publickey"
+    ip_mode = "IPv4"
+    allocate_public_IP = false
     enable_volume_encryption = true
-    volume_size = 100
+    volume_size = 200
     enable_instance_connect = false
     disable_instance_termination = false
     allow_upload_download = true
@@ -155,5 +157,5 @@ output "instance_public_ip" {
 | gwlb_name           | The name of the deployed Gateway Load Balancer                                        |
 | gwlb_service_name   | The service name for the deployed Gateway Load Balancer                               |
 | gwlb_arn            | The arn for the deployed Gateway Load Balancer                                        |
-| enable_ipv6         | Dual-stack IPv4/IPv6 compatible                                                       |
+| ip_mode             | The IP mode of AWS resources.                                                         |
 
