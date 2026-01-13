@@ -113,7 +113,7 @@ module "example_module" {
 | **metadata_imdsv2_required** | Set true to deploy the instance with metadata v2 token required | bool | true;<br/>false.<br/>**Default:** true<br/>Required |
 | **instance_tags** | (Optional) A map of tags as key=value pairs. Tags will be added to the Gateway EC2 instances | map(string) | **Default:** {} |
 | **predefined_role** | (Optional) A predefined IAM role to attach to the cluster profile | string | **Default:** "" |
-| **gateway_version** | Gateway version and license | string | "R81.10-BYOL";<br/>"R81.20-BYOL";<br/>"R82-BYOL".<br/>**Default:** "R81.20-BYOL" |
+| **gateway_version** | Gateway version and license | string | - R81.20-BYOL<br>- R82-BYOL<br>- R82.10-BYOL <br>**Default:** R82-BYOL |
 | **admin_shell** | Set the admin shell to enable advanced command line configuration | string | "/etc/cli.sh";<br/>"/bin/bash";<br/>"/bin/csh".<br/>**Default:** "/etc/cli.sh" |
 | **gateway_SICKey** | The Secure Internal Communication key for trusted connection between Check Point components. Must be at least 8 alphanumeric characters | string | **Default:** "12345678" |
 | **gateway_password_hash** | (Optional) Admin user's password hash (use `openssl passwd -6 PASSWORD` to generate) | string | **Default:** "" |
