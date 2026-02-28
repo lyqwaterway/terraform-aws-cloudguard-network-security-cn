@@ -24,7 +24,7 @@ This solution uses the following modules:
 - vpc
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/CheckPointSW/china-cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 **Example:**
 ```
@@ -32,7 +32,7 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "lyqwaterway/cloudguard-network-security-cn/aws//examples/qs_autoscale_master"
+    source  = "CheckPointSW/china-cloudguard-network-security/aws//examples/qs_autoscale_master"
     version = "1.0.0"
 
     
