@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "cme_role_assume_policy_document" {
     actions = ["sts:AssumeRole"]
     principals {
       type = var.trusted_account == "" ? "Service" : "AWS"
-      identifiers = var.trusted_account == "" ? ["ec2.amazonaws.com"] : [var.trusted_account]
+      identifiers = var.trusted_account == "" ? ["ec2.amazonaws.com.cn"] : [var.trusted_account]
     }
   }
 }

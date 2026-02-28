@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "cluster_role_assume_policy_document" {
     actions = ["sts:AssumeRole"]
     principals {
       type = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["ec2.amazonaws.com.cn"]
     }
   }
 }

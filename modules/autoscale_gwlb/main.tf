@@ -160,7 +160,7 @@ data "aws_iam_policy_document" "assume_role_policy_document" {
     actions = ["sts:AssumeRole"]
     principals {
       type = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["ec2.amazonaws.com.cn"]
     }
     effect = "Allow"
   }

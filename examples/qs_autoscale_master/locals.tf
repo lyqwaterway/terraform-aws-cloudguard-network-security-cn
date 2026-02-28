@@ -27,9 +27,9 @@ locals {
   // will fail if var.key_name is invalid
   regex_key_name_result=regex(local.regex_valid_key_name, var.key_name) == var.key_name ? 0 : "Variable [key_name] must be a none empty string"
 
-  regex_valid_certificate = "^(arn:aws:[a-z]+::[0-9]{12}:server-certificate/[a-zA-Z0-9-]*)?$"
+  regex_valid_certificate = "^(arn:aws-cn:[a-z]+::[0-9]{12}:server-certificate/[a-zA-Z0-9-]*)?$"
   // Will fail if var.certificate is invalid
-  regex_certificate = regex(local.regex_valid_certificate, var.certificate) == var.certificate ? 0 : "Variable [certificate] must be a valid Amazon Resource Name (ARN), for example: arn:aws:iam::123456789012:server-certificate/web-server-certificate"
+  regex_certificate = regex(local.regex_valid_certificate, var.certificate) == var.certificate ? 0 : "Variable [certificate] must be a valid Amazon Resource Name (ARN), for example: arn:aws-cn:iam::123456789012:server-certificate/web-server-certificate"
 
   regex_valid_service_port = "^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])?$"
   // Will fail if var.service_port is invalid

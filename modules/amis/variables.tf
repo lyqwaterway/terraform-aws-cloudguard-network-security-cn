@@ -1,7 +1,7 @@
 variable "amis_url" {
   type = string
   description = "URL to amis.yaml"
-  default = "https://cgi-cfts.s3.cn-northwest-1.amazonaws.com.cn/utils/amis.yaml"
+  default = "https://cgns-china-cft.s3.us-east-1.amazonaws.com/utils/amis.yaml"
 }
 
 data "http" "amis_yaml_http" {
