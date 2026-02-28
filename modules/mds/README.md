@@ -15,7 +15,7 @@ This solution uses the following modules:
 - cme_iam_role
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/china-cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -24,8 +24,8 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/mds"
-    version = "1.0.4"
+    source  = "CheckPointSW/china-cloudguard-network-security/aws//modules/mds"
+    version = "1.0.8"
     
     // --- VPC Network Configuration ---
     vpc_id = "vpc-12345678"
@@ -108,7 +108,7 @@ module "example_module" {
 | secondary_ntp                      | (Optional) IPv4 address of the secondary Network Time Protocol server                                                                                      | string       | **Default:** 0.pool.ntp.org                                                               |
 | mds_bootstrap_script               | (Optional) Semicolon-separated commands to run during initial boot                                                                                        | string       |                                                                                                 |
 | mds_maintenance_mode_password_hash | (Optional) Admin user's password hash for maintenance mode                                                                                                 | string       |                                                                                                 |
- security_rules | List of security rules for ingress and egress.                                                         | list(object({<br/>    direction   = string    <br/>from_port   = any    <br/>to_port     = any <br/>protocol    = any <br/>cidr_blocks = list(any)<br/>}))         | **Default:** []|
+| security_rules                     | List of security rules for ingress and egress.                                                         | list(object({<br/>    direction   = string    <br/>from_port   = any    <br/>to_port     = any <br/>protocol    = any <br/>cidr_blocks = list(any)<br/>}))         | **Default:** []|
 
 
 

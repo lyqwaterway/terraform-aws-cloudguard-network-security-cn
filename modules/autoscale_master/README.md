@@ -19,7 +19,7 @@ This solution uses the following modules:
 - vpc
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/china-cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -28,18 +28,18 @@ provider "aws" {}
 
 module "example_module" {
 
-    source = "lyqwaterway/cloudguard-network-security-cn/aws//modules/autoscale_master"
-    version = "1.0.4"
+    source = "checkpointsw/china-cloudguard-network-security/aws//modules/autoscale_master"
+    version = "1.0.8"
     
     // VPC Configuration
     vpc_cidr = "10.0.0.0/16"
     public_subnets_map = {
-      "us-east-1a" = 1
-      "us-east-1b" = 2
+      "cn-northwest-1a" = 1
+      "cn-northwest-1b" = 2
     }
     private_subnets_map = {
-      "us-east-1a" = 3
-      "us-east-1b" = 4
+      "cn-northwest-1a" = 3
+      "cn-northwest-1b" = 4
     }
     subnets_bit_length = 8
 
@@ -60,7 +60,7 @@ module "example_module" {
     // --- Auto Scaling Configuration ---
     minimum_group_size = 2
     maximum_group_size = 10
-    target_groups = ["arn:aws-cn:tg1/abc123", "arn:aws:tg2/def456"]
+    target_groups = ["arn:aws-cn:tg1/abc123", "arn:aws-cn:tg2/def456"]
 
     // --- Check Point Settings ---
     gateway_version = "R81.20-BYOL"

@@ -16,7 +16,7 @@ This solution uses the following modules:
 
 
 ## Usage
-Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/lyqwaterway/cloudguard-network-security-cn/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
+Follow best practices for using CGNS modules on [the root page](https://registry.terraform.io/modules/checkpointsw/china-cloudguard-network-security/aws/latest#:~:text=Best%20Practices%20for%20Using%20Our%20Modules).
 
 
 **Example:**
@@ -25,8 +25,8 @@ provider "aws" {}
 
 module "example_module" {
 
-    source  = "lyqwaterway/cloudguard-network-security-cn/aws//modules/autoscale_gwlb"
-    version = "1.0.4"
+    source  = "CheckPointSW/china-cloudguard-network-security/aws//modules/autoscale_gwlb"
+    version = "1.0.8"
 
         // --- Environment ---
     prefix = "env1"
@@ -38,7 +38,6 @@ module "example_module" {
 
     // --- Automatic Provisioning with Security Management Server Settings ---
     gateways_provision_address_type = "private"
-    allocate_public_IP = false
     management_server = "mgmt_env1"
     configuration_template = "tmpl_env1"
 
@@ -47,6 +46,7 @@ module "example_module" {
     gateway_instance_type = "c5.xlarge"
     key_name = "publickey"
     ip_mode = "IPv4"
+    allocate_public_IP = false
     instances_tags = {
         key1 = "value1"
         key2 = "value2"
@@ -55,7 +55,7 @@ module "example_module" {
     // --- Auto Scaling Configuration ---
     minimum_group_size = 2
     maximum_group_size = 10
-    target_groups = ["arn:aws-cn:tg1/abc123", "arn:aws:tg2/def456"]
+    target_groups = ["arn:aws-cn:tg1/abc123", "arn:aws-cn:tg2/def456"]
 
     // --- Check Point Settings ---
     gateway_version = "R81.20-BYOL"
@@ -79,14 +79,14 @@ module "example_module" {
 | vpc_id                                 | The VPC ID in which to deploy                                                                                                                                                  | string       |                                                                                                               |
 | subnet_ids                             | List of public subnet IDs to launch resources into. Recommended at least 2                                                                                                     | list(string) |                                                                                                               |
 | gateways_provision_address_type        | Determines if the gateways are provisioned using their private or public address.                                                                                              | string       | - private<br>- public<br>**Default:** private                                                                 |
-| allocate_public_IP                     | Allocate a Public IP for gateway members.                                                                                                                                      | bool         | true/false<br>**Default:** false                                                                              |
 | management_server                      | The name that represents the Security Management Server in the CME configuration                                                                                               | string       |                                                                                                               |
 | configuration_template                 | Name of the provisioning template in the CME configuration                                                                                                                     | string       |                                                                                                               |
 | gateway_name                           | The name tag of the Security Gateways instances                                                                                                                                | string       | **Default:** Check-Point-ASG-gateway-tf                                                                       |
 | gateway_instance_type                  | The instance type of the Security Gateways                                                                                                                                    | string       | - c4.large <br/> - c4.xlarge <br/> - c5.large <br/> - c5.xlarge <br/> - c5.2xlarge <br/> - c5.4xlarge <br/> - c5.9xlarge <br/> - c5.12xlarge <br/> - c5.18xlarge <br/> - c5.24xlarge <br/> - c5d.large <br/> - c5d.xlarge <br/> - c5d.2xlarge <br/> - c5d.4xlarge <br/> - c5d.9xlarge <br/> - c5d.12xlarge <br/> - c5d.18xlarge <br/> - c5d.24xlarge <br/> - m5.large <br/> - m5.xlarge <br/> - m5.2xlarge <br/> - m5.4xlarge <br/> - m5.8xlarge <br/> - m5.12xlarge <br/> - m5.16xlarge <br/> - m5.24xlarge <br/> - m6i.large <br/> - m6i.xlarge <br/> - m6i.2xlarge <br/> - m6i.4xlarge <br/> - m6i.8xlarge <br/> - m6i.12xlarge <br/> - m6i.16xlarge <br/> - m6i.24xlarge <br/> - m6i.32xlarge <br/> - c6i.large <br/> - c6i.xlarge <br/> - c6i.2xlarge <br/> - c6i.4xlarge <br/> - c6i.8xlarge <br/> - c6i.12xlarge <br/> - c6i.16xlarge <br/> - c6i.24xlarge <br/> - c6i.32xlarge <br/>  - r5.large <br/> - r5.xlarge <br/> - r5.2xlarge <br/> - r5.4xlarge <br/> - r5.8xlarge <br/> - r5.12xlarge <br/> - r5.16xlarge <br/> - r5.24xlarge <br/> - r5a.large <br/> - r5a.xlarge <br/> - r5a.2xlarge <br/> - r5a.4xlarge <br/> - r5a.8xlarge <br/> - r5a.12xlarge <br/> - r5a.16xlarge <br/> - r5a.24xlarge <br/> - r6i.large <br/> - r6i.xlarge <br/> - r6i.2xlarge <br/> - r6i.4xlarge <br/> - r6i.8xlarge <br/> - r6i.12xlarge <br/> - r6i.16xlarge <br/> - r6i.24xlarge <br/> - r6i.32xlarge <br/> **Default:** c5.xlarge                            |
 | key_name                               | The EC2 Key Pair name to allow SSH access to the instances                                                                                                                     | string       |                                                                                                               |
 | ip_mode                                | Specifies the IP mode for the GWLB. When set to DualStack, the gateway supports both IPv4 and IPv6 traffic. [Please see version compatibility in the following guide](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_CloudGuard_Network_for_AWS_Gateway_Load_Balancer_ASG/Content/Topics-AWS-GWLB-ASG-DG/IPv6-Support.htm)                                                                                                                                      | string        | "IPv4"/"DualStack"<br/>**Default:** "IPv4"                                                                             |
-| volume_size                            | Root volume size (GB) - minimum 100                                                                                                                                            | number       | **Default:** 200                                                                                              |
+| allocate_public_IP                     | Allocate a Public IP for gateway members.                                                                                                                                      | bool         | true/false<br>**Default:** false                                                                              |
+| volume_size                            | Root volume size (GB) - minimum 100                                                                                                                                            | number       | **Default:** 100                                                                                              |
 | enable_volume_encryption               | Encrypt Environment instances volume with default AWS KMS key                                                                                                                  | bool         | true/false<br>**Default:** true                                                                               |
 | instances_tags                         | (Optional) A map of tags as key=value pairs. All tags will be added to all AutoScaling Group instances                                                                          | map(string)  | **Default:** {}                                                                                               |
 | metadata_imdsv2_required               | Set true to deploy the instance with metadata v2 token required                                                                                                                | bool         | true/false<br>**Default:** true                                                                               |

@@ -60,6 +60,17 @@ variable "health_check_protocol" {
   type = string
   default = null
 }
+
+variable "tcp_idle_timeout" {
+  description = "The idle timeout of the load balancer."
+  type = number
+  default = null
+  validation {
+    condition = var.tcp_idle_timeout == null || (var.tcp_idle_timeout >= 60 && var.tcp_idle_timeout <= 6000)
+    error_message = "The tcp_idle_timeout value must be between 60 and 6000 seconds"
+  }
+}
+
 variable "ip_mode" {
   type = string
   description = "IP mode of AWS resources."
@@ -68,4 +79,54 @@ variable "ip_mode" {
     condition     = contains(["IPv4", "DualStack"], var.ip_mode)
     error_message = "The ip_mode value must be one of: IPv4 or DualStack."
   }
+}
+
+variable "load_balancer_name" {
+  type = string
+  description = "(Optional) Load balancer name. Must be 32 characters or less."
+  default = ""
+  validation {
+    condition     = length(var.load_balancer_name) <= 32
+    error_message = "The load_balancer_name value must be 32 characters or less."
+  }
+}
+
+variable "target_group_name" {
+  type = string
+  description = "(Optional) Target group name. Must be 32 characters or less."
+  default = ""
+  validation {
+    condition     = length(var.target_group_name) <= 32
+    error_message = "The target_group_name value must be 32 characters or less."
+  }
+}
+
+variable "deregistration_delay" {
+  description = "(Optional) The amount of time for Elastic Load Balancing to wait before changing the state of a de-registering target from draining to unused."
+  type = number
+  default = null
+}
+
+variable "health_check_interval" {
+  description = "(Optional) The approximate interval, in seconds, between health checks of an individual target."
+  type = number
+  default = null
+}
+
+variable "healthy_threshold" {
+  description = "(Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy."
+  type = number
+  default = null
+}
+
+variable "unhealthy_threshold" {
+  description = "(Optional) The number of consecutive health check failures required before considering a target unhealthy."
+  type = number
+  default = null
+}
+
+variable "enable_deletion_protection" {
+  description = "(Optional) Whether to enable deletion protection on the load balancer."
+  type = bool
+  default = null
 }
